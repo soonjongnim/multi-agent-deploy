@@ -1,0 +1,28 @@
+프론트는 vuejs 기반 Vite 프로젝트,
+백엔드는 FastAPI 기반 Python 프로젝트입니다.
+
+환경설정방법:
+벡엔드->
+cd backend
+python -m pip install -r requirements.txt
+프론트->
+# 1) Node / npm 설치 확인
+node -v
+npm -v
+# 2) frontend 디렉토리로 이동하고 의존성 설치
+cd frontend
+npm install
+# 안되면 아래 명령어 시도
+npm install --legacy-peer-deps
+# 3) (선택) 백엔드 주소를 .env 파일에 설정 (Vite는 VITE_ 접두사 환경변수 자동 로드)
+'VITE_API_URL=http://localhost:8000' | Out-File -Encoding UTF8 .env.local
+# 4) 개발 서버 실행
+npm run dev
+
+실행방법:
+벡엔드->
+cd backend/app
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+프론트엔드 ->
+cd frontend
+npm run dev
