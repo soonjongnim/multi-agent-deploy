@@ -10,6 +10,8 @@
     <div class="space-x-2">
       <router-link to="/generate" class="px-4 py-2 bg-blue-600 text-white rounded">Generate</router-link>
       <router-link to="/deploy" class="px-4 py-2 bg-gray-200 rounded">Deploy</router-link>
+      <!-- 회의록 작성 버튼 추가 -->
+      <router-link to="/meetings" class="px-4 py-2 bg-indigo-600 text-white rounded">회의록 작성</router-link>
     </div>
   </div>
 </template>

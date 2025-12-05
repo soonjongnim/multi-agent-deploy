@@ -35,4 +35,32 @@ export const API = {
         return response.json();
     },
 
+    // audio 파일 업로드 후 전사 결과를 반환합니다.
+    // FormData에 'file' 키로 파일을 전달해야 합니다.
+    uploadAudio: async (file) => {
+        const base = import.meta.env.VITE_API_URL || "http://localhost:8000";
+        const fd = new FormData();
+        fd.append('file', file, file.name);
+
+        try {
+            const response = await fetch(`${base}/transcribe`, {
+                method: 'POST',
+                body: fd,
+            });
+
+            // 네트워크 레벨에서 실패하면 above에서 throw, 여기는 정상적으로 응답받았을 때
+            if (!response.ok) {
+                const txt = await response.text();
+                return { error: `Server responded ${response.status}: ${txt}` };
+            }
+
+            // 정상 JSON이면 파싱
+            const data = await response.json();
+            return data;
+        } catch (err) {
+            // 네트워크/크로스 도메인 문제 등 잡아냄
+            return { error: String(err) };
+        }
+    }
+
 };

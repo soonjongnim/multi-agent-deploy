@@ -5,11 +5,13 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../pages/Home.vue'
 import Generate from '../pages/Generate.vue'
 import Deploy from '../pages/Deploy.vue'
+import MeetingNotes from '../pages/MeetingNotes.vue'
 
 // 라우트 배열 정의: 각 경로에 매칭되는 컴포넌트를 지정합니다.
 const routes = [
   { path: '/', component: Home },
   { path: '/generate', component: Generate },
+  { path: '/meetings', component: MeetingNotes },
   { path: '/deploy', component: Deploy },
 ]
 
